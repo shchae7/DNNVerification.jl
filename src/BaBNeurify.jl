@@ -76,7 +76,7 @@ include("reachability/utils/reachability.jl")
 include("reachability/neurify.jl")
 export Neurify
 
-include("neurifyBaB.jl")
+include("custom/neurifyBaB.jl")
 export NeurifyBaB
 
 
