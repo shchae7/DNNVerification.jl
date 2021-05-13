@@ -1,5 +1,5 @@
 name = "BaBNeurify"
-uuid = "146f25fa-00e7-11e9-3ae5-fdbac6e12fa7"
+uuid = "03769899-9fc2-4546-868b-e4d980e59bf9"
 
 [deps]
 CDDLib = "3391f64e-dcde-5f30-b752-e11513730f60"
