@@ -47,7 +47,6 @@ function solve(solver::Neurify, problem::Problem)
     nnet, output = problem.network, problem.output
     reach_list = []
     domain = init_symbolic_grad(problem.input)
-    print(domain)
     splits = Set()
     for i in 1:solver.max_iter
         if i > 1

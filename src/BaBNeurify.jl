@@ -74,8 +74,11 @@ export BaB
 
 include("reachability/utils/reachability.jl")
 include("reachability/neurify.jl")
-
 export Neurify
+
+include("neurifyBaB.jl")
+export NeurifyBaB
+
 
 const TOL = Ref(sqrt(eps()))
 set_tolerance(x::Real) = (TOL[] = x)

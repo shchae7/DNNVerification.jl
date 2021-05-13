@@ -21,7 +21,7 @@ outputSet = HPolytope([HalfSpace([1.0, 0.0, 0.0, 0.0, -1.0], 0.0)])
 
 problem_polytope_polytope_acas = Problem(acas_nnet, in_hyper, outputSet);
 
-solver=Neurify()
+solver=NeurifyBaB()
 println("$(typeof(solver)) - acas")
 timed_result =@timed solve(solver, problem_polytope_polytope_acas)
 println(" - Time: " * string(timed_result[2]) * " s")
