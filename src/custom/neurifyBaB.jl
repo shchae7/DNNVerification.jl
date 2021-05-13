@@ -1,4 +1,4 @@
-@with_kw struct BaBNeurify <: Solver
+@with_kw struct NeurifyBaB <: Solver
     max_iter::Int64     = 100
     tree_search::Symbol = :DFS
     optimizer           = GLPK.optimizer
@@ -6,7 +6,7 @@
 end
 
 
-function solve(solver::BaBNeurify, problem::Problem)
+function solve(solver::NeurifyBaB, problem::Problem)
     isbounded(problem.input) || throw(UnboundedInputError("BaBNeurify can only handle bounded input sets."))
 
     nnet, output = problem.network, problem.output
