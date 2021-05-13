@@ -1,7 +1,7 @@
 @with_kw struct NeurifyBaB <: Solver
     max_iter::Int64     = 100
     tree_search::Symbol = :DFS
-    optimizer           = GLPK.optimizer
+    optimizer           = GLPK.Optimizer
     ϵ::Float64          = 0.1
 end
 
