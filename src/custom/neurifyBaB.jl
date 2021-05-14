@@ -12,11 +12,16 @@ function solve(solver::NeurifyBaB, problem::Problem)
 
     reach_list = []
 
-    doms = init_symbolic_grad(problem.input)
-    println(doms)
+    domain = init_symbolic_grad(problem.input)
+    println(domain)
 
     splits = Set()
     println(splits)
+
+
+    reach = forward_network(solver, nnet, domain, collect=true)
+    println(reach)
+
 
     return CounterExampleResult(:unknown)
 end
