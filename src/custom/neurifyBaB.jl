@@ -9,7 +9,7 @@ end
 function solve(solver::NeurifyBaB, problem::Problem)
     doms = init_symbolic_grad(problem.input)
 
-    dom, doms = pick_out(doms)
+    println(doms)
 
     return CounterExampleResult(:unknown)
 end
