@@ -1,7 +1,7 @@
 using BaBNeurify, LazySets, Test, LinearAlgebra, GLPK
 import BaBNeurify: ReLU, Id
 
-acas_file = "../networks/small_nnet.nnet"
+acas_file = "../networks/tiny_nnet.nnet"
 acas_nnet = read_nnet(acas_file, last_layer_activation = Id());
 
 # ACAS PROPERTY 10 - modified

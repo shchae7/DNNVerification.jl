@@ -7,9 +7,16 @@ end
 
 
 function solve(solver::NeurifyBaB, problem::Problem)
-    doms = init_symbolic_grad(problem.input)
+    nnet, output = problem.network, problem.output
+    println(nnet)
 
+    reach_list = []
+
+    doms = init_symbolic_grad(problem.input)
     println(doms)
+
+    splits = Set()
+    println(splits)
 
     return CounterExampleResult(:unknown)
 end
