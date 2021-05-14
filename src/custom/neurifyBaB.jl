@@ -35,7 +35,7 @@ function solve(solver::NeurifyBaB, problem::Problem)
 end
 
 # Symbolic forward_linear
-function forward_linear(solver::Neurify, L::Layer, input::SymbolicIntervalGradient)
+function forward_linear(solver::NeurifyBaB, L::Layer, input::SymbolicIntervalGradient)
     output_Low, output_Up = interval_map(L.weights, input.sym.Low, input.sym.Up)
     output_Up[:, end] += L.bias
     output_Low[:, end] += L.bias
@@ -44,7 +44,7 @@ function forward_linear(solver::Neurify, L::Layer, input::SymbolicIntervalGradie
 end
 
 # Symbolic forward_act
-function forward_act(solver::Neurify, L::Layer{ReLU}, input::SymbolicIntervalGradient)
+function forward_act(solver::NeurifyBaB, L::Layer{ReLU}, input::SymbolicIntervalGradient)
     n_node = n_nodes(L)
     output_Low, output_Up = copy(input.sym.Low), copy(input.sym.Up)
     LΛᵢ, UΛᵢ = zeros(n_node), ones(n_node)
@@ -70,7 +70,7 @@ function forward_act(solver::Neurify, L::Layer{ReLU}, input::SymbolicIntervalGra
     return SymbolicIntervalGradient(sym, LΛ, UΛ)
 end
 
-function forward_act(solver::Neurify, L::Layer{Id}, input::SymbolicIntervalGradient)
+function forward_act(solver::NeurifyBaB, L::Layer{Id}, input::SymbolicIntervalGradient)
     n_node = n_nodes(L)
     LΛ = push!(input.LΛ, ones(n_node))
     UΛ = push!(input.UΛ, ones(n_node))
