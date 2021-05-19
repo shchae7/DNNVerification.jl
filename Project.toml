@@ -1,5 +1,5 @@
-name = "BaBNeurify"
-uuid = "03769899-9fc2-4546-868b-e4d980e59bf9"
+name = "DNNVerification"
+uuid = "b8146cd7-265b-454f-b82b-0076b551881f"
 
 [deps]
 CDDLib = "3391f64e-dcde-5f30-b752-e11513730f60"

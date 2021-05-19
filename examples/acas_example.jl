@@ -1,5 +1,5 @@
-using BaBNeurify, LazySets, Test, LinearAlgebra, GLPK
-import BaBNeurify: ReLU, Id
+using DNNVerification, LazySets, Test, LinearAlgebra, GLPK
+import DNNVerification: ReLU, Id
 
 acas_file = "../networks/tiny_nnet.nnet"
 acas_nnet = read_nnet(acas_file, last_layer_activation = Id());
@@ -21,7 +21,7 @@ outputSet = HPolytope([HalfSpace([1.0, 0.0, 0.0, 0.0, -1.0], 0.0)])
 
 problem_polytope_polytope_acas = Problem(acas_nnet, in_hyper, outputSet);
 
-solver=NeurifyBaB()
+solver=Neurify()
 println("$(typeof(solver)) - acas")
 timed_result =@timed solve(solver, problem_polytope_polytope_acas)
 println(" - Time: " * string(timed_result[2]) * " s")

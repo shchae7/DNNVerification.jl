@@ -1,5 +1,5 @@
 using Random
-using BaBNeurify;
+using DNNVerification;
 
 """
     make_random_network(layer_sizes::Vector{Int}, [min_weight = -1.0], [max_weight = 1.0], [min_bias = -1.0], [max_bias = 1.0], [rng = 1.0])
@@ -19,9 +19,9 @@ function make_random_network(layer_sizes::Vector{Int}, min_weight = -1.0, max_we
         next_size = layer_sizes[index+1]
         # Use Id activation for the last layer - otherwise use ReLU activation
         if index == (length(layer_sizes)-1)
-            cur_activation = BaBNeurify.Id()
+            cur_activation = DNNVerification.Id()
         else
-            cur_activation = BaBNeurify.ReLU()
+            cur_activation = DNNVerification.ReLU()
         end
 
         # Dimension: num_out x num_in
@@ -30,7 +30,7 @@ function make_random_network(layer_sizes::Vector{Int}, min_weight = -1.0, max_we
 
         # Dimension: num_out x 1
         cur_bias = min_bias .+ (max_bias - min_bias) * rand(rng, Float64, (next_size))
-        push!(layers, BaBNeurify.Layer(cur_weights, cur_bias, cur_activation))
+        push!(layers, DNNVerification.Layer(cur_weights, cur_bias, cur_activation))
     end
     
     return Network(layers)

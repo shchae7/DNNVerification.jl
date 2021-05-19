@@ -1,0 +1,4 @@
+name = "DNNVerification"
+uuid = "b8146cd7-265b-454f-b82b-0076b551881f"
+authors = ["shchae7_server <shchae7@postech.ac.kr>"]
+version = "0.1.0"

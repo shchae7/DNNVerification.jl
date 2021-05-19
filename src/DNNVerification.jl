@@ -1,4 +1,4 @@
-module BaBNeurify
+module DNNVerification
 
 using JuMP
 
@@ -76,8 +76,8 @@ include("reachability/utils/reachability.jl")
 include("reachability/neurify.jl")
 export Neurify
 
-include("custom/neurifyBaB.jl")
-export NeurifyBaB
+include("custom/babNeurify.jl")
+export BaBNeurify
 
 
 const TOL = Ref(sqrt(eps()))
