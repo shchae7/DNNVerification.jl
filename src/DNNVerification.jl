@@ -73,8 +73,9 @@ include("optimization/bab.jl")
 export BaB
 
 include("reachability/utils/reachability.jl")
+include("reachability/reluVal.jl")
 include("reachability/neurify.jl")
-export Neurify
+export ReluVal, Neurify
 
 include("custom/babNeurify.jl")
 export BaBNeurify
