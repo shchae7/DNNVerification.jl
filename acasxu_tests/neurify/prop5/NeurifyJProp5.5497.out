@@ -1,0 +1,28 @@
+SLURM_SUBMIT_DIR=/home/shchae7/DNNVerification.jl/acasxu_tests/neurify/prop5
+0: n9
+1: n9
+0: /home/shchae7/DNNVerification.jl/acasxu_tests/neurify/prop5
+1: /home/shchae7/DNNVerification.jl/acasxu_tests/neurify/prop5
+1: Thu Jun  3 02:43:56 KST 2021
+0: Thu Jun  3 02:43:56 KST 2021
+Thu Jun  3 02:44:12 KST 2021
+Neurify - acas xu property 5
+ - Time: 53.037106633 s
+ - Output: 
+CounterExampleResult(:unknown, Float64[])
+
+ - Time: 27.794042403 s
+ - Output: 
+CounterExampleResult(:unknown, Float64[])
+
+ - Time: 31.715962865 s
+ - Output: 
+CounterExampleResult(:unknown, Float64[])
+
+ - Time: 27.812990519 s
+ - Output: 
+CounterExampleResult(:unknown, Float64[])
+
+Thu Jun  3 02:54:53 KST 2021
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+              5497   titanxp NeurifyJ  shchae7  R      11:01      1 n9
