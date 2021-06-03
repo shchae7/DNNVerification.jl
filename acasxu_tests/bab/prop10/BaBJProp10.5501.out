@@ -1,0 +1,10 @@
+SLURM_SUBMIT_DIR=/home/shchae7/DNNVerification.jl/acasxu_tests/bab/prop10
+0: n9
+1: n9
+0: /home/shchae7/DNNVerification.jl/acasxu_tests/bab/prop10
+1: /home/shchae7/DNNVerification.jl/acasxu_tests/bab/prop10
+0: Thu Jun  3 03:00:26 KST 2021
+1: Thu Jun  3 03:00:26 KST 2021
+Thu Jun  3 03:00:38 KST 2021
+Warning: basis matrix is ill-conditioned (cond = 2.08e+14)
+slurmstepd: error: *** JOB 5501 ON n9 CANCELLED AT 2021-06-03T16:56:06 ***
