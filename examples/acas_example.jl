@@ -1,7 +1,7 @@
 using DNNVerification, LazySets, Test, LinearAlgebra, GLPK
 import DNNVerification: ReLU, Id
 
-acas_file = "../networks/tiny_nnet.nnet"
+acas_file = "../networks/ACASXU_run2a_1_1_tiny_4.nnet"
 acas_nnet = read_nnet(acas_file, last_layer_activation = Id());
 
 # ACAS PROPERTY 10 - modified
