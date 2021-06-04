@@ -37,13 +37,7 @@ end
 
 function solve(solver::Neurify, problem::Problem)
     isbounded(problem.input) || throw(UnboundedInputError("Neurify can only handle bounded input sets."))
-
-    # Because of over-approximation, a split may not bisect the input set.
-    # Therefore, the gradient remains unchanged (since input didn't change).
-    # And this node will be chosen to split forever.
-    # To prevent this, we split each node only once if the gradient of this node hasn't changed.
-    # Each element in splits is a tuple (layer_index, node_index, node_gradient).
-
+        
     nnet, output = problem.network, problem.output
     reach_list = []
     domain = init_symbolic_grad(problem.input)
