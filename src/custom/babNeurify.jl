@@ -19,6 +19,12 @@ function solve(solver::BaBNeurify, problem::Problem)
         end
 
         reach = forward_network(solver, nnet, domain, collect=true)
+        if i < 2
+            println(reach)
+            println(reach[0][0])
+            println(reach[0][0].sym.Low)
+            println(reach[0][0].sym.Up)
+        end
 
         popfirst!(reach)
         result, max_violation_con = check_inclusion(solver, nnet, last(reach).sym, output)   # 여기까지 수정 필요 없는 듯
