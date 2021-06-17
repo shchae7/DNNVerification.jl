@@ -21,11 +21,11 @@ function solve(solver::BaBNeurify, problem::Problem)
         reach = forward_network(solver, nnet, domain, collect=true)
         if i < 2
             println("Low")
-            println(reach[0].sym.Low)
+            println(reach[2].sym.Low)
             println("\n\n")
 
             println("Up")
-            println(reach[0].sym.Up)
+            println(reach[2].sym.Up)
         end
 
         popfirst!(reach)
