@@ -7,6 +7,8 @@ end
 
 
 function solve(solver::BaBNeurify, problem::Problem)
+    isbounded(problem.input) || throw(UnboundedInputError("BaBNeurify can only handle bounded input sets."))
+
     nnet, output = problem.network, problem.output
     reach_list = []
     domain = init_symbolic_grad(problem.input)
@@ -23,7 +25,7 @@ function solve(solver::BaBNeurify, problem::Problem)
 
         if result.status === :violated
             return result
-        elseif result.status === :SizeUnknown
+        elseif result.status === :unknown
             subdomains = constraint_refinement(nnet, reach, max_violation_con, splits) # branch and bound
             for domain in subdomains
                 push!(reach_list, (init_symbolic_grad(domain), copy(splits)))
@@ -38,13 +40,13 @@ function check_inclusion(solver::BaBNeurify, nnet::Network, reach::SymbolicInter
     input_domain = domain(reach)
 
     model = Model(solver); set_silent(model)
-    x = @variable(mode, [1:dim(input_domain)])
+    x = @variable(model, [1:dim(input_domain)])
     add_set_constraint!(model, input_domain, x)
 
     max_violation = 0.0
     max_violation_con = nothing
     for (i, cons) in enumerate(constraints_list(output))
-        a, b = cons.a, cons.barrier
+        a, b = cons.a, cons.b
         c = max.(a, 0)'*reach.Up + min.(a, 0)'*reach.Low
 
         @objective(model, Max, c * [x; 1] - b)
