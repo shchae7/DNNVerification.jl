@@ -12,8 +12,8 @@ function solve(solver::BaBNeurify, problem::Problem)
     nnet, output = problem.network, problem.output
     reach_list = []
     domain = init_symbolic_grad(problem.input)
-    #global_concrete, global_apprx = bounds(lower(domain), 0)
-    println(forward_network(solver, nnet, domain, collect=true))
+    global_concrete = domain.sym.output_Low
+    global_approx = domain.sym.output_Up
     splits = Set()
     for i in 1:solver.max_iter
         if i > 1
@@ -32,13 +32,12 @@ function solve(solver::BaBNeurify, problem::Problem)
             for domain in subdomains
                 # Check dom_concrete vs global_concrete --> update global_concrete
                 # domain의 lower bound의 low, upper bound 구하는 함수 구현하기 (bounds 사용하면 가능할 듯?)
-                #if domain.concrete - global_concrete > 0
-                #    global_concrete = domain.concrete
-                #end
-                #if dom.approx - global_concrete > 0
-                #    push!(reach_list, (init_symbolic_grad(domain), copy(splits)))
-                #end
-                push!(reach_list, (init_symbolic_grad(domain), copy(splits)))
+                if domain.sym.output_Low - global_concrete > 0
+                    global_concrete = domain.sym.output_Low
+                end
+                if domain.sym.output_Up - global_concrete > 0
+                    push!(reach_list, (init_symbolic_grad(domain), copy(splits)))
+                end
             end
         end
         isempty(reach_list) && return CounterExampleResult(:holds)
